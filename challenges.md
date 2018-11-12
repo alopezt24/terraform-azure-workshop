@@ -5,7 +5,7 @@ Below is a series of "challenges" or guided exercises to help attendees learn ab
 ## Prerequisites
 
 - Laptop
-- Azure account with access to deploy at least 10 cores and permissions to generate a service principal. A trail Azure account can be created for this event.
+- Azure account with access to deploy at least 10 cores and permissions to generate a service principal. A trial Azure account can be created for this event.
 - Github Account (Free)
 - Terraform Enterprise Account. Attendees will be provided a 30-day trial.
 
@@ -19,7 +19,9 @@ If you get stuck, refer to the `solutions` directory for a working solution to t
 
 ### Challenge 00: [Getting Started](challenges/00-gettingstarted/README.md)
 
-### Challenge 01: [Connecting to Azure](challenges/01-connectingtoazure/README.md)
+### Challenge 01: [Connecting to Azure - Part 1](challenges/01-connectingtoazure-part1/README.md)
+
+### Challenge 01: [Connecting to Azure - Part 2](challenges/01-connectingtoazure-part2/README.md)
 
 ### Challenge 02: [Azure Container Instance](challenges/02-aci-helloworld/README.md)
 

@@ -1,6 +1,14 @@
 # 01 - Connection To Azure - Part 2
 
-This is a continuation of Challenge 01 where we will learn how to use Terraform imports. For part 1 please see: [01 - Connection To Azure](01 - Connection To Azure). We will stay in the same working directory for this part of the challenge: ``~/AzureWorkChallenges/challenge01/`.
+This is a continuation of Challenge 01 where we will learn how to use Terraform imports. For part 1 please visit the following link:
+
+[01 - Connection To Azure](01 - Connection To Azure). 
+
+We will stay in the same working directory for this part of the challenge: 
+
+```bash
+~/AzureWorkChallenges/challenge01/
+```
 
 ## Expected Outcome
 
