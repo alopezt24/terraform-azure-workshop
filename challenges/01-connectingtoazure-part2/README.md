@@ -2,7 +2,7 @@
 
 This is a continuation of Challenge 01 where we will learn how to use Terraform imports. For part 1 please visit the following link:
 
-[01 - Connection To Azure](01 - Connection To Azure). 
+[01 - Connection To Azure - Part 1](challenges/01-connectingtoazure-part1/README.md)
 
 We will stay in the same working directory for this part of the challenge: 
 
