@@ -207,7 +207,7 @@ resource "azurerm_virtual_machine" "main" {
 }
 ```
 
-Take note of the OS image:
+Take note of the OS image.  DO NOT COPY THIS INTO YOUR CODE!
 
 ```hcl
   storage_image_reference {
