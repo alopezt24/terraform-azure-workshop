@@ -48,27 +48,6 @@
       .titletext[Introduction]
 
       ---
-      name: IaC
-      What is Infrastructure as Code?
-      -------------------------
-      <br><br><br>
-      .biglist[
-      Infrastructure as Code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files. 
-      ]
-
-      ---
-      name: IaC2
-      Infrastructure as Code Allows Us To...
-      -------------------------
-      <br><br><br>
-      .biglist[
-      * Provide a codified workflow to create infrastructure
-      * Expose a workflow for managing updates to existing infrastructure
-      * Integrate with application code workflows (Git, SCM, Code Review)
-      * Provide modular, sharable components for separation of concerns
-      ]
-
-      ---
       name: Provision-a-VM
       Provision a Virtual Machine
       -------------------------
@@ -100,34 +79,43 @@
       ![:scale 100%](images/azure_provision_3.png)
 
       ---
-      name: Infrastructure-as-Code
-      Infrastructure as Code
+      name: Azure-Resource-Manager
+      Provision with Azure Resource Manager
+      -------------------------
+      ```json
+      {
+      ...
+      "apiVersion": "2017-03-30",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[variables('vmName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('virtualMachineSize')]"
+        },
+        "osProfile": {
+          "computerName": "[variables('vmName')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
+        }
+      ```
+
+      ARM templates provide a consistent and reliable way to provision Azure resources. JSON is easy for computers to read, but can be challenging for humans to edit and troubleshoot.
+
+      ---
+      name: Provision-with-Terraform
+      Provision with Terraform
       -------------------------
       ![:scale 100%](images/infra_as_code.png)
 
       ---
-      name: Infrastructure-as-Code-2
-      Infrastructure as Code
+      name: Provision-with-Terraform-2
+      Provision with Terraform
       -------------------------
       ![:scale 100%](images/infra_as_code_2.png)
-
-      ---
-      name: What-is-Terraform
-      What is Terraform?
-      -------------------------
-      <br><br><br>
-      .contents[
-      Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently.
-      ]
-
-      ---
-      name: Terraform-and-IaC
-      Terraform and Infrastructure as Code
-      -------------------------
-      <br><br><br>
-      .contents[
-      Infrastructure is described using a high-level configuration syntax. This allows a blueprint of your datacenter to be versioned and treated as you would any other code. Additionally, infrastructure can be shared and re-used.
-      ]
 
       ---
       name: What-is-Terraform
@@ -147,11 +135,147 @@
       ???
       Terraform is the DNA of your infrastructure.
 
+      ---
+      name: IaC
+      What is Infrastructure as Code?
+      -------------------------
+      <br><br><br>
+      .biglist[
+      Infrastructure as Code (IaC) is the process of managing and provisioning cloud infrastructure with machine-readable definition files. 
+      
+      Think of it as executable documentation.
+      ]
 
       ---
-      name: Workstation-Setup
-      class: center,middle,title-slide
-      .titletext[Workstation Setup]
+      name: IaC2
+      Infrastructure as Code Allows Us To...
+      -------------------------
+      <br><br>
+      .biglist[
+      * Provide a codified workflow to create infrastructure
+      * Expose a workflow for managing updates to existing infrastructure
+      * Integrate with application code workflows (Git, Azure DevOps, CI/CD tools)
+      * Provide modular, sharable components for separation of concerns
+      ]
+
+      ---
+      name: IaC-Tools
+      Other Infrastructure as Code Tools
+      -------------------------
+      <br><br>
+      .center[![:scale 60%](images/infra_tools.png)]
+
+      These tools work well for configuring the operating system and application. They are not purpose-built for provisioning cloud infrastructure and platform services.
+
+      ---
+      name: Native-Tools
+      Native Cloud Provisioning Tools
+      -------------------------
+      <br><br><br>
+      .center[![:scale 100%](images/clouds.png)]
+
+      Each cloud has its own YAML or JSON based provisioning tool. 
+
+      Terraform can be used across *all* major cloud providers and VM hypervisors.
+
+      ---
+      Name: Terraform-vs-JSON
+      Terraform vs. JSON
+      -------------------------
+
+      ARM JSON:
+      ```json
+      "name": "[concat(parameters('PilotServerName'), '3')]",
+      ```
+
+      Terraform:
+      ```hcl
+      name = "${var.PilotServerName}3"
+      ```
+
+      Terraform code (HCL) is easy to learn and easy to read. It is also 50-70% more compact than an equivalent JSON configuration.
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+      ![:scale 100%](images/azure-loves-terraform.png)
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+
+      .contents[
+      * Supports multi-cloud & hybrid infrastructure
+      ]
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+
+      .contents[
+      * Supports multi-cloud & hybrid infrastructure
+      * Migrate from other cloud providers
+      ]
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+
+      .contents[
+      * Supports multi-cloud & hybrid infrastructure
+      * Migrate from other cloud providers
+      * Increase provisioning speed
+      ]
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+
+      .contents[
+      * Supports multi-cloud & hybrid infrastructure
+      * Migrate from other cloud providers
+      * Increase provisioning speed
+      * Improve efficiency
+      ]
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+
+      .contents[
+      * Supports multi-cloud & hybrid infrastructure
+      * Migrate from other cloud providers
+      * Increase provisioning speed
+      * Improve efficiency
+      * Reduce risk
+      ]
+
+      ---
+      Name: Why-Terraform
+      Why Terraform?
+      -------------------------
+
+      .contents[
+      * Supports multi-cloud & hybrid infrastructure
+      * Migrate from other cloud providers
+      * Increase provisioning speed
+      * Improve efficiency
+      * Reduce risk
+      ]
+
+      .center[.contents[Sell more Azure!]]
+
+      ---
+      name: Live-Demo
+      class: center,middle
+      Live Demo
+      =========================
 
       ---
       name: CloudShell-or-Laptop
