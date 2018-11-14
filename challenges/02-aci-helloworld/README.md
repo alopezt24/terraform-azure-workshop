@@ -189,7 +189,7 @@ resource "azurerm_container_group" "windows" {
 
 ### Run Terraform Workflow
 
-Running an `init`, `plan`, and `apply` should yield another Container Instance.
+Running `plan` and `apply` should yield another Container Instance.
 
 Navigating back to the Azure Portal to get the FQDN and following that URL should get you the very familiar IIS default sites page:
 ![](../../img/2018-05-07-18-29-10.png)
