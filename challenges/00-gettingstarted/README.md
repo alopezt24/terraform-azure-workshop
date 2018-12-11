@@ -173,6 +173,11 @@ Run the following in the azure cloud shell, this will simply create a folder str
 mkdir AzureWorkChallenges && cd AzureWorkChallenges && mkdir challenge01 && mkdir challenge02 && mkdir challenge03 && mkdir challenge04 && mkdir challenge05 && mkdir challenge06 && mkdir challenge07
 ```
 
+And if you happen to be doing this in Powershell, here's the Powershell version of that command line:
+```powershell
+mkdir AzureWorkChallenges; cd AzureWorkChallenges; mkdir challenge01; mkdir challenge02; mkdir challenge03; mkdir challenge04; mkdir challenge05; mkdir challenge06; mkdir challenge07
+```
+
 What you should end up with is a structure like this:
 
 ```sh
