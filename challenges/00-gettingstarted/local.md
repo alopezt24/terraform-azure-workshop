@@ -119,7 +119,7 @@ git clone https://github.com/alopezt24/terraform-azure-workshop.git
 code terraform-azure-workshop/
 ```
 
-> If running `code TerraformWorkshop` doesn't launch VS Code, open up VS Code manually and open the folder you cloned the repository to.
+> If running `code terraform-azure-workshop` doesn't launch VS Code, open up VS Code manually and open the folder you cloned the repository to.
 
 ### Github Access
 
