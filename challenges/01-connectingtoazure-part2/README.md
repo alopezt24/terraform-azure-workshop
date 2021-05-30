@@ -312,14 +312,14 @@ Add the following tag configuration to both the Resource Group and the Storage A
 ```hcl
 resource "azurerm_resource_group" "main" {
   ...
-  tags {
+tags = {
     terraform = "true"
   }
 }
 
 resource "azurerm_storage_account" "main" {
   ...
-  tags {
+tags = {
     terraform = "true"
   }
 }
