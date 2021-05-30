@@ -78,19 +78,35 @@ We have two resources we need to import into our Terraform Configuration, to do 
 To create the base configuration place the following code into the `main.tf` file.
 
 ```hcl
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.61.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+
+# Create a resource group
 resource "azurerm_resource_group" "main" {
   name     = "myportal-rg"
-  location = "centralus"
+  location = "eastus"
 }
 
 resource "azurerm_storage_account" "main" {
-  name                     = "myusernamestorageaccount"
+  name                     = "storageaccountpei"
   resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "centralus"
+  location                 = "eastus"
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
-
 ```
 
 `terraform plan`
