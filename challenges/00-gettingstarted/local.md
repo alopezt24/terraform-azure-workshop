@@ -24,7 +24,7 @@ Verify the installation by running `az -v`, you should see something like this, 
 
 ```sh
 $ az -v
-azure-cli (2.0.32)
+azure-cli (2.21.0)
 
 ... Other python dependencies
 
