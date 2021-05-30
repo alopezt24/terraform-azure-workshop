@@ -188,51 +188,49 @@ When you are done, destroy the infrastructure, we no longer need it.
 
 ```sh
 $ terraform destroy
-azurerm_resource_group.main: Refreshing state... (ID: /subscriptions/.../resourceGroups/challenge01-rg)
-azurerm_resource_group.count[0]: Refreshing state... (ID: /subscriptions/.../resourceGroups/challenge01-rg-0)
-azurerm_resource_group.count[1]: Refreshing state... (ID: /subscriptions/.../resourceGroups/challenge01-rg-1)
-
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
+erraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   - destroy
 
 Terraform will perform the following actions:
 
-  - azurerm_resource_group.count[0]
+  # azurerm_resource_group.count[0] will be destroyed
+  - resource "azurerm_resource_group" "count" {
+      - id       = "/subscriptions/de6fa43c-2e10-4bb6-8cfd-4e876a534996/resourceGroups/challenge01-rg-0" -> null
+      - location = "eastus" -> null
+      - name     = "challenge01-rg-0" -> null
+      - tags     = {} -> null
+    }
 
-  - azurerm_resource_group.count[1]
+  # azurerm_resource_group.count[1] will be destroyed
+  - resource "azurerm_resource_group" "count" {
+      - id       = "/subscriptions/de6fa43c-2e10-4bb6-8cfd-4e876a534996/resourceGroups/challenge01-rg-1" -> null
+      - location = "eastus" -> null
+      - name     = "challenge01-rg-1" -> null
+      - tags     = {} -> null
+    }
 
-  - azurerm_resource_group.main
+Plan: 0 to add, 0 to change, 2 to destroy.
 
-
-Plan: 0 to add, 0 to change, 3 to destroy.
-
-Do you really want to destroy?
+Do you really want to destroy all resources?
   Terraform will destroy all your managed infrastructure, as shown above.
   There is no undo. Only 'yes' will be accepted to confirm.
 
   Enter a value: yes
 
-azurerm_resource_group.main: Destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg)
-azurerm_resource_group.count[1]: Destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-1)
-azurerm_resource_group.count[0]: Destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-0)
-azurerm_resource_group.count.0: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-0, 10s elapsed)
-azurerm_resource_group.main: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg, 10s elapsed)
-azurerm_resource_group.count.1: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-1, 10s elapsed)
-azurerm_resource_group.count.1: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-1, 20s elapsed)
-azurerm_resource_group.count.0: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-0, 20s elapsed)
-azurerm_resource_group.main: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg, 20s elapsed)
-azurerm_resource_group.count.1: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-1, 30s elapsed)
-azurerm_resource_group.count.0: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-0, 30s elapsed)
-azurerm_resource_group.main: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg, 30s elapsed)
-azurerm_resource_group.count.0: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-0, 40s elapsed)
-azurerm_resource_group.count.1: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg-1, 40s elapsed)
-azurerm_resource_group.main: Still destroying... (ID: /subscriptions/.../resourceGroups/challenge01-rg, 40s elapsed)
-azurerm_resource_group.main: Destruction complete after 47s
-azurerm_resource_group.count[0]: Destruction complete after 47s
-azurerm_resource_group.count[1]: Destruction complete after 47s
+azurerm_resource_group.count[0]: Destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-4e876a534996/resourceGroups/challenge01-rg-0]
+azurerm_resource_group.count[1]: Destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-4e876a534996/resourceGroups/challenge01-rg-1]
+azurerm_resource_group.count[0]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-0, 10s elapsed]
+azurerm_resource_group.count[1]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-1, 10s elapsed]
+azurerm_resource_group.count[1]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-1, 20s elapsed]
+azurerm_resource_group.count[0]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-0, 20s elapsed]
+azurerm_resource_group.count[1]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-1, 30s elapsed]
+azurerm_resource_group.count[0]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-0, 30s elapsed]
+azurerm_resource_group.count[0]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-0, 40s elapsed]
+azurerm_resource_group.count[1]: Still destroying... [id=/subscriptions/de6fa43c-2e10-4bb6-8cfd-...534996/resourceGroups/challenge01-rg-1, 40s elapsed]
+azurerm_resource_group.count[0]: Destruction complete after 45s
+azurerm_resource_group.count[1]: Destruction complete after 45s
 
-Destroy complete! Resources: 3 destroyed.
+Destroy complete! Resources: 2 destroyed.
 ```
 ---
 
