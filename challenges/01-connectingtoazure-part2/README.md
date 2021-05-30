@@ -114,43 +114,147 @@ resource "azurerm_storage_account" "main" {
 Shows 2 to add
 
 ```sh
+Terraform used the selected providers to generate the following execution plan. 
+Resource actions are indicated with the following symbols:
+  + create
+
 Terraform will perform the following actions:
 
-  + azurerm_resource_group.main
-      id:                               <computed>
-      location:                         "centralus"
-      name:                             "myportal-rg"
-      tags.%:                           <computed>
+  # azurerm_resource_group.main will be created
+  + resource "azurerm_resource_group" "main" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "myportal-rg"
+    }
 
-  + azurerm_storage_account.main
-      id:                               <computed>
-      access_tier:                      <computed>
-      account_encryption_source:        "Microsoft.Storage"
-      account_kind:                     "Storage"
-      account_replication_type:         "LRS"
-      account_tier:                     "Standard"
-      enable_blob_encryption:           <computed>
-      enable_file_encryption:           <computed>
-      location:                         "centralus"
-      name:                             "myusernamestorageaccount"
-      primary_access_key:               <computed>
-      primary_blob_connection_string:   <computed>
-      primary_blob_endpoint:            <computed>
-      primary_connection_string:        <computed>
-      primary_file_endpoint:            <computed>
-      primary_location:                 <computed>
-      primary_queue_endpoint:           <computed>
-      primary_table_endpoint:           <computed>
-      resource_group_name:              "myportal-rg"
-      secondary_access_key:             <computed>
-      secondary_blob_connection_string: <computed>
-      secondary_blob_endpoint:          <computed>
-      secondary_connection_string:      <computed>
-      secondary_location:               <computed>
-      secondary_queue_endpoint:         <computed>
-      secondary_table_endpoint:         <computed>
-      tags.%:                           <computed>
+  # azurerm_storage_account.main will be created
+  + resource "azurerm_storage_account" "main" {
+      + access_tier                      = (known after apply)
+      + account_kind                     = "StorageV2"
+      + account_replication_type         = "LRS"
+      + account_tier                     = "Standard"
+      + allow_blob_public_access         = false
+      + enable_https_traffic_only        = true
+      + id                               = (known after apply)
+      + is_hns_enabled                   = false
+      + large_file_share_enabled         = (known after apply)
+      + location                         = "eastus"
+      + min_tls_version                  = "TLS1_0"
+      + name                             = "storageaccountpei"
+      + nfsv3_enabled                    = false
+      + primary_access_key               = (sensitive value)
+      + primary_blob_connection_string   = (sensitive value)
+      + primary_blob_endpoint            = (known after apply)
+      + primary_blob_host                = (known after apply)
+      + primary_connection_string        = (sensitive value)
+      + primary_dfs_endpoint             = (known after apply)
+      + primary_dfs_host                 = (known after apply)
+      + primary_file_endpoint            = (known after apply)
+      + primary_file_host                = (known after apply)
+      + primary_location                 = (known after apply)
+      + primary_queue_endpoint           = (known after apply)
+      + primary_queue_host               = (known after apply)
+      + primary_table_endpoint           = (known after apply)
+      + primary_table_host               = (known after apply)
+      + primary_web_endpoint             = (known after apply)
+      + primary_web_host                 = (known after apply)
+      + resource_group_name              = "myportal-rg"
+      + secondary_access_key             = (sensitive value)
+      + secondary_blob_connection_string = (sensitive value)
+      + secondary_blob_endpoint          = (known after apply)
+      + secondary_blob_host              = (known after apply)
+      + secondary_connection_string      = (sensitive value)
+      + secondary_dfs_endpoint           = (known after apply)
+      + secondary_dfs_host               = (known after apply)
+      + secondary_file_endpoint          = (known after apply)
+      + secondary_file_host              = (known after apply)
+      + secondary_location               = (known after apply)
+      + secondary_queue_endpoint         = (known after apply)
+      + secondary_queue_host             = (known after apply)
+      + secondary_table_endpoint         = (known after apply)
+      + secondary_table_host             = (known after apply)
+      + secondary_web_endpoint           = (known after apply)
+      + secondary_web_host               = (known after apply)
 
+      + blob_properties {
+          + change_feed_enabled      = (known after apply)
+          + default_service_version  = (known after apply)
+          + last_access_time_enabled = (known after apply)
+          + versioning_enabled       = (known after apply)
+
+          + container_delete_retention_policy {
+              + days = (known after apply)
+            }
+
+          + cors_rule {
+              + allowed_headers    = (known after apply)
+              + allowed_methods    = (known after apply)
+              + allowed_origins    = (known after apply)
+              + exposed_headers    = (known after apply)
+              + max_age_in_seconds = (known after apply)
+            }
+
+          + delete_retention_policy {
+              + days = (known after apply)
+            }
+        }
+
+      + identity {
+          + principal_id = (known after apply)
+          + tenant_id    = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + network_rules {
+          + bypass                     = (known after apply)
+          + default_action             = (known after apply)
+          + ip_rules                   = (known after apply)
+          + virtual_network_subnet_ids = (known after apply)
+
+          + private_link_access {
+              + endpoint_resource_id = (known after apply)
+              + endpoint_tenant_id   = (known after apply)
+            }
+        }
+
+      + queue_properties {
+          + cors_rule {
+              + allowed_headers    = (known after apply)
+              + allowed_methods    = (known after apply)
+              + allowed_origins    = (known after apply)
+              + exposed_headers    = (known after apply)
+              + max_age_in_seconds = (known after apply)
+            }
+
+          + hour_metrics {
+              + enabled               = (known after apply)
+              + include_apis          = (known after apply)
+              + retention_policy_days = (known after apply)
+              + version               = (known after apply)
+            }
+
+          + logging {
+              + delete                = (known after apply)
+              + read                  = (known after apply)
+              + retention_policy_days = (known after apply)
+              + version               = (known after apply)
+              + write                 = (known after apply)
+            }
+
+          + minute_metrics {
+              + enabled               = (known after apply)
+              + include_apis          = (known after apply)
+              + retention_policy_days = (known after apply)
+              + version               = (known after apply)
+            }
+        }
+
+      + routing {
+          + choice                      = (known after apply)
+          + publish_internet_endpoints  = (known after apply)
+          + publish_microsoft_endpoints = (known after apply)
+        }
+    }
 
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
