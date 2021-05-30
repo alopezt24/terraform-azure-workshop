@@ -20,6 +20,23 @@ From the Cloud Shell, change directory into a folder specific to this challenge.
 Create a file named `main.tf` and add a single Resource Group resource.
 
 ```hcl
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.61.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+
+# Create a resource group
 resource "azurerm_resource_group" "test" {
   name     = "challenge01-rg"
   location = "eastus"
