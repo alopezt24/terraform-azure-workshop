@@ -91,7 +91,7 @@ Verify the installation by running `terraform -v`, you should see something like
 
 ```sh
 $ terraform -v
-Terraform v0.11.7
+Terraform v0.15.4
 ```
 
 The latest release can always be found on the [Terraform Website](https://www.terraform.io/downloads.html)
