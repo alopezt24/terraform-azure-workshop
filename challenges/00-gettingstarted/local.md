@@ -69,8 +69,6 @@ As one last step here, login to the [Azure Portal](https://portal.azure.com/), t
 
 ### Download Terraform
 
-In this workshop we will be using terraform 0.11.7 for all of the challenges.
-
 Navigate to the downloads page [https://releases.hashicorp.com/terraform/0.15.4/](https://releases.hashicorp.com/terraform/0.15.4/) and select the `.zip` file for your operating system.
 
 For **Windows** - [Download Here](https://releases.hashicorp.com/terraform/0.15.4/terraform_0.15.4_windows_amd64.zip)
@@ -118,7 +116,7 @@ Then open the repository in VS Code.
 ```sh
 cd ~/Projects/
 git clone https://github.com/alopezt24/terraform-azure-workshop.git
-code TerraformWorkshop
+code terraform-azure-workshop/
 ```
 
 > If running `code TerraformWorkshop` doesn't launch VS Code, open up VS Code manually and open the folder you cloned the repository to.
