@@ -71,11 +71,13 @@ As one last step here, login to the [Azure Portal](https://portal.azure.com/), t
 
 In this workshop we will be using terraform 0.11.7 for all of the challenges.
 
-Navigate to the downloads page [https://releases.hashicorp.com/terraform/0.11.7/](https://releases.hashicorp.com/terraform/0.11.7/) and select the `.zip` file for your operating system.
+Navigate to the downloads page [https://releases.hashicorp.com/terraform/0.15.4/](https://releases.hashicorp.com/terraform/0.15.4/) and select the `.zip` file for your operating system.
 
-For **Windows** - [Download Here](https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_windows_amd64.zip)
+For **Windows** - [Download Here](https://releases.hashicorp.com/terraform/0.15.4/terraform_0.15.4_windows_amd64.zip)
 
-For **Mac** - [Download Here](https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_darwin_amd64.zip)
+For **Mac** - [Download Here](https://releases.hashicorp.com/terraform/0.15.4/terraform_0.15.4_darwin_amd64.zip)
+
+For **Linux** - [Download Here](https://releases.hashicorp.com/terraform/0.15.4/terraform_0.15.4_linux_amd64.zip)
 
 Once downloaded, extract the contents which is just a `terraform` binary and copy it to a folder inside your PATH environment variable.
 
