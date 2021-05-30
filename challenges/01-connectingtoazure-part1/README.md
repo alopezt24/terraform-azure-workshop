@@ -128,18 +128,18 @@ can't guarantee to take exactly these actions if you run "terraform apply" now.
 ```sh
 $ terraform apply
 
-An execution plan has been generated and is shown below.
+Terraform used the selected providers to generate the following execution plan. 
 Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
 
-  + azurerm_resource_group.main
-      id:       <computed>
-      location: "eastus"
-      name:     "challenge01-rg"
-      tags.%:   <computed>
-
+  # azurerm_resource_group.test will be created
+  + resource "azurerm_resource_group" "test" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "challenge01-rg"
+    }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 
@@ -149,11 +149,8 @@ Do you want to perform these actions?
 
   Enter a value: yes
 
-azurerm_resource_group.main: Creating...
-  location: "" => "eastus"
-  name:     "" => "challenge01-rg"
-  tags.%:   "" => "<computed>"
-azurerm_resource_group.main: Creation complete after 1s (ID: /subscriptions/.../resourceGroups/challenge01-rg)
+zurerm_resource_group.test: Creating...
+azurerm_resource_group.test: Creation complete after 0s [id=/subscriptions/.../resourceGroups/challenge01-rg]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
