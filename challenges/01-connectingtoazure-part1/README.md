@@ -101,20 +101,19 @@ Resource actions are indicated with the following symbols:
 
 Terraform will perform the following actions:
 
-  + azurerm_resource_group.main
-      id:       <computed>
-      location: "eastus"
-      name:     "challenge01-rg"
-      tags.%:   <computed>
+  # azurerm_resource_group.test will be created
+  + resource "azurerm_resource_group" "test" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "challenge01-rg"
+    }
 
 
 Plan: 1 to add, 0 to change, 0 to destroy.
 
 ------------------------------------------------------------------------
 
-Note: You didn't specify an "-out" parameter to save this plan, so Terraform
-can't guarantee that exactly these actions will be performed if
-"terraform apply" is subsequently run.
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
 ```
 
 </p>
