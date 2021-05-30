@@ -117,7 +117,7 @@ Then open the repository in VS Code.
 
 ```sh
 cd ~/Projects/
-git clone https://github.com/scarolan/terraform-azure-workshop
+git clone https://github.com/alopezt24/terraform-azure-workshop.git
 code TerraformWorkshop
 ```
 
