@@ -12,9 +12,11 @@ To make some of the steps easier we will use the Azure CLI and authenticate to A
 
 Download and install the latest Azure CLI:
 
-For **Windows** - [Download Here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+For **Windows** - [Download Here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
 
 For **Mac** - [Download Here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest)
+
+For **Linux** - [Download Here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt&view=azure-cli-latest)
 
 > If you are having issues, more information can be found [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
