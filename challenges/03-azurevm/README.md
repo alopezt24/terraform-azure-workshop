@@ -347,8 +347,6 @@ public-ip = "168.62.56.184"
 
 Using the Public IP output value, Remote Desktop into the Virtual Machine to verify connectivity.
 
-![](../../img/2018-05-09-14-55-42.png)
-
 Success! You have now stood up a Virtual Machine in Azure using Terraform!
 
 ### Clean up
@@ -357,12 +355,12 @@ When you are done, run `terraform destroy` to remove everything we created:
 
 ```sh
 terraform destroy
-azurerm_resource_group.main: Refreshing state... (ID: /subscriptions/.../resourceGroups/challenge03-rg)
-azurerm_public_ip.main: Refreshing state... (ID: /subscriptions/.../publicIPAddresses/challenge03-pubip)
-azurerm_virtual_network.main: Refreshing state... (ID: /subscriptions/.../virtualNetworks/challenge03-vnet)
-azurerm_subnet.main: Refreshing state... (ID: /subscriptions/.../subnets/challenge03-subnet)
-azurerm_network_interface.main: Refreshing state... (ID: /subscriptions/.../networkInterfaces/challenge03-nic)
-azurerm_virtual_machine.main: Refreshing state... (ID: /subscriptions/.../virtualMachines/challenge03-vm)
+azurerm_resource_group.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg]
+azurerm_public_ip.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/publicIPAddresses/challenge03-pubip]
+azurerm_virtual_network.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/virtualNetworks/challenge03-vnet]
+azurerm_subnet.main: Refreshing [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/virtualNetworks/challenge03-vnet/subnets/challenge03-subnet]
+azurerm_network_interface.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/networkInterfaces/challenge03-nic]
+azurerm_virtual_machine.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Compute/virtualMachines/challenge03-vm]
 
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
