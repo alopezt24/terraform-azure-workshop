@@ -133,195 +133,265 @@ Your plan should look similar to the following
 
 ```sh
 $ terraform plan
-Refreshing Terraform state in-memory prior to plan...
-The refreshed state will be used to calculate this plan, but will not be
-persisted to local or remote state storage.
-
-
-------------------------------------------------------------------------
-
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
 
-  + azurerm_network_interface.main[0]
-      id:                                                                 <computed>
-      applied_dns_servers.#:                                              <computed>
-      dns_servers.#:                                                      <computed>
-      enable_accelerated_networking:                                      "false"
-      enable_ip_forwarding:                                               "false"
-      internal_dns_name_label:                                            <computed>
-      internal_fqdn:                                                      <computed>
-      ip_configuration.#:                                                 "1"
-      ip_configuration.0.application_gateway_backend_address_pools_ids.#: <computed>
-      ip_configuration.0.application_security_group_ids.#:                <computed>
-      ip_configuration.0.load_balancer_backend_address_pools_ids.#:       <computed>
-      ip_configuration.0.load_balancer_inbound_nat_rules_ids.#:           <computed>
-      ip_configuration.0.name:                                            "config1"
-      ip_configuration.0.primary:                                         <computed>
-      ip_configuration.0.private_ip_address:                              <computed>
-      ip_configuration.0.private_ip_address_allocation:                   "dynamic"
-      ip_configuration.0.public_ip_address_id:                            "${element(azurerm_public_ip.main.*.id, count.index)}"
-      ip_configuration.0.subnet_id:                                       "${azurerm_subnet.main.id}"
-      location:                                                           "eastus"
-      mac_address:                                                        <computed>
-      name:                                                               "challenge04-nic0"
-      private_ip_address:                                                 <computed>
-      private_ip_addresses.#:                                             <computed>
-      resource_group_name:                                                "challenge04-rg"
-      tags.%:                                                             <computed>
-      virtual_machine_id:                                                 <computed>
+  # azurerm_network_interface.main[0] will be created
+  + resource "azurerm_network_interface" "main" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "eastus"
+      + mac_address                   = (known after apply)
+      + name                          = "challenge04-nic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "challenge04-rg"
+      + virtual_machine_id            = (known after apply)
 
-  + azurerm_network_interface.main[1]
-      id:                                                                 <computed>
-      applied_dns_servers.#:                                              <computed>
-      dns_servers.#:                                                      <computed>
-      enable_accelerated_networking:                                      "false"
-      enable_ip_forwarding:                                               "false"
-      internal_dns_name_label:                                            <computed>
-      internal_fqdn:                                                      <computed>
-      ip_configuration.#:                                                 "1"
-      ip_configuration.0.application_gateway_backend_address_pools_ids.#: <computed>
-      ip_configuration.0.application_security_group_ids.#:                <computed>
-      ip_configuration.0.load_balancer_backend_address_pools_ids.#:       <computed>
-      ip_configuration.0.load_balancer_inbound_nat_rules_ids.#:           <computed>
-      ip_configuration.0.name:                                            "config1"
-      ip_configuration.0.primary:                                         <computed>
-      ip_configuration.0.private_ip_address:                              <computed>
-      ip_configuration.0.private_ip_address_allocation:                   "dynamic"
-      ip_configuration.0.public_ip_address_id:                            "${element(azurerm_public_ip.main.*.id, count.index)}"
-      ip_configuration.0.subnet_id:                                       "${azurerm_subnet.main.id}"
-      location:                                                           "eastus"
-      mac_address:                                                        <computed>
-      name:                                                               "challenge04-nic1"
-      private_ip_address:                                                 <computed>
-      private_ip_addresses.#:                                             <computed>
-      resource_group_name:                                                "challenge04-rg"
-      tags.%:                                                             <computed>
-      virtual_machine_id:                                                 <computed>
+      + ip_configuration {
+          + name                          = "config1"
+          + primary                       = (known after apply)
+          + private_ip_address            = (known after apply)
+          + private_ip_address_allocation = "dynamic"
+          + private_ip_address_version    = "IPv4"
+          + public_ip_address_id          = (known after apply)
+          + subnet_id                     = (known after apply)
+        }
+    }
 
-  + azurerm_public_ip.main[0]
-      id:                                                                 <computed>
-      fqdn:                                                               <computed>
-      ip_address:                                                         <computed>
-      location:                                                           "eastus"
-      name:                                                               "challenge04-pubip0"
-      public_ip_address_allocation:                                       "static"
-      resource_group_name:                                                "challenge04-rg"
-      sku:                                                                "Basic"
-      tags.%:                                                             <computed>
+  # azurerm_network_interface.main[1] will be created
+  + resource "azurerm_network_interface" "main" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "eastus"
+      + mac_address                   = (known after apply)
+      + name                          = "challenge04-nic"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "challenge04-rg"
+      + virtual_machine_id            = (known after apply)
 
-  + azurerm_public_ip.main[1]
-      id:                                                                 <computed>
-      fqdn:                                                               <computed>
-      ip_address:                                                         <computed>
-      location:                                                           "eastus"
-      name:                                                               "challenge04-pubip1"
-      public_ip_address_allocation:                                       "static"
-      resource_group_name:                                                "challenge04-rg"
-      sku:                                                                "Basic"
-      tags.%:                                                             <computed>
+      + ip_configuration {
+          + name                          = "config1"
+          + primary                       = (known after apply)
+          + private_ip_address            = (known after apply)
+          + private_ip_address_allocation = "dynamic"
+          + private_ip_address_version    = "IPv4"
+          + public_ip_address_id          = (known after apply)
+          + subnet_id                     = (known after apply)
+        }
+    }
 
-  + azurerm_resource_group.main
-      id:                                                                 <computed>
-      location:                                                           "eastus"
-      name:                                                               "challenge04-rg"
-      tags.%:                                                             <computed>
+  # azurerm_public_ip.main[0] will be created
+  + resource "azurerm_public_ip" "main" {
+      + allocation_method       = "Static"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "challenge04-pubip"
+      + resource_group_name     = "challenge04-rg"
+      + sku                     = "Basic"
+    }
 
-  + azurerm_subnet.main
-      id:                                                                 <computed>
-      address_prefix:                                                     "10.0.1.0/24"
-      ip_configurations.#:                                                <computed>
-      name:                                                               "challenge04-subnet"
-      resource_group_name:                                                "challenge04-rg"
-      virtual_network_name:                                               "challenge04-vnet"
+  # azurerm_public_ip.main[1] will be created
+  + resource "azurerm_public_ip" "main" {
+      + allocation_method       = "Static"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "challenge04-pubip"
+      + resource_group_name     = "challenge04-rg"
+      + sku                     = "Basic"
+    }
 
-  + azurerm_virtual_machine.main[0]
-      id:                                                                 <computed>
-      availability_set_id:                                                <computed>
-      delete_data_disks_on_termination:                                   "false"
-      delete_os_disk_on_termination:                                      "false"
-      identity.#:                                                         <computed>
-      location:                                                           "eastus"
-      name:                                                               "challenge04-vm0"
-      network_interface_ids.#:                                            <computed>
-      os_profile.#:                                                       "1"
-      os_profile.1750279281.admin_password:                               <sensitive>
-      os_profile.1750279281.admin_username:                               "testadmin"
-      os_profile.1750279281.computer_name:                                "challenge04vm0"
-      os_profile.1750279281.custom_data:                                  <computed>
-      os_profile_windows_config.#:                                        "1"
-      os_profile_windows_config.429474957.additional_unattend_config.#:   "0"
-      os_profile_windows_config.429474957.enable_automatic_upgrades:      "false"
-      os_profile_windows_config.429474957.provision_vm_agent:             "false"
-      os_profile_windows_config.429474957.winrm.#:                        "0"
-      resource_group_name:                                                "challenge04-rg"
-      storage_image_reference.#:                                          "1"
-      storage_image_reference.3904372903.id:                              ""
-      storage_image_reference.3904372903.offer:                           "WindowsServer"
-      storage_image_reference.3904372903.publisher:                       "MicrosoftWindowsServer"
-      storage_image_reference.3904372903.sku:                             "2016-Datacenter"
-      storage_image_reference.3904372903.version:                         "latest"
-      storage_os_disk.#:                                                  "1"
-      storage_os_disk.0.caching:                                          "ReadWrite"
-      storage_os_disk.0.create_option:                                    "FromImage"
-      storage_os_disk.0.disk_size_gb:                                     <computed>
-      storage_os_disk.0.managed_disk_id:                                  <computed>
-      storage_os_disk.0.managed_disk_type:                                "Standard_LRS"
-      storage_os_disk.0.name:                                             "challenge04vm0-osdisk"
-      tags.%:                                                             <computed>
-      vm_size:                                                            "Standard_A2_v2"
+  # azurerm_resource_group.main will be created
+  + resource "azurerm_resource_group" "main" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "challenge04-rg"
+    }
 
-  + azurerm_virtual_machine.main[1]
-      id:                                                                 <computed>
-      availability_set_id:                                                <computed>
-      delete_data_disks_on_termination:                                   "false"
-      delete_os_disk_on_termination:                                      "false"
-      identity.#:                                                         <computed>
-      location:                                                           "eastus"
-      name:                                                               "challenge04-vm1"
-      network_interface_ids.#:                                            <computed>
-      os_profile.#:                                                       "1"
-      os_profile.1900549424.admin_password:                               <sensitive>
-      os_profile.1900549424.admin_username:                               "testadmin"
-      os_profile.1900549424.computer_name:                                "challenge04vm1"
-      os_profile.1900549424.custom_data:                                  <computed>
-      os_profile_windows_config.#:                                        "1"
-      os_profile_windows_config.429474957.additional_unattend_config.#:   "0"
-      os_profile_windows_config.429474957.enable_automatic_upgrades:      "false"
-      os_profile_windows_config.429474957.provision_vm_agent:             "false"
-      os_profile_windows_config.429474957.winrm.#:                        "0"
-      resource_group_name:                                                "challenge04-rg"
-      storage_image_reference.#:                                          "1"
-      storage_image_reference.3904372903.id:                              ""
-      storage_image_reference.3904372903.offer:                           "WindowsServer"
-      storage_image_reference.3904372903.publisher:                       "MicrosoftWindowsServer"
-      storage_image_reference.3904372903.sku:                             "2016-Datacenter"
-      storage_image_reference.3904372903.version:                         "latest"
-      storage_os_disk.#:                                                  "1"
-      storage_os_disk.0.caching:                                          "ReadWrite"
-      storage_os_disk.0.create_option:                                    "FromImage"
-      storage_os_disk.0.disk_size_gb:                                     <computed>
-      storage_os_disk.0.managed_disk_id:                                  <computed>
-      storage_os_disk.0.managed_disk_type:                                "Standard_LRS"
-      storage_os_disk.0.name:                                             "challenge04vm1-osdisk"
-      tags.%:                                                             <computed>
-      vm_size:                                                            "Standard_A2_v2"
+  # azurerm_subnet.main will be created
+  + resource "azurerm_subnet" "main" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "10.0.1.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "challenge04-subnet"
+      + resource_group_name                            = "challenge04-rg"
+      + virtual_network_name                           = "challenge04-vnet"
+    }
 
-  + azurerm_virtual_network.main
-      id:                                                                 <computed>
-      address_space.#:                                                    "1"
-      address_space.0:                                                    "10.0.0.0/16"
-      location:                                                           "eastus"
-      name:                                                               "challenge04-vnet"
-      resource_group_name:                                                "challenge04-rg"
-      subnet.#:                                                           <computed>
-      tags.%:                                                             <computed>
+  # azurerm_virtual_machine.main[0] will be created
+  + resource "azurerm_virtual_machine" "main" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = false
+      + delete_os_disk_on_termination    = false
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "eastus"
+      + name                             = "challenge04-vm0"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "challenge04-rg"
+      + vm_size                          = "Standard_A2_v2"
 
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_password = (sensitive value)
+          + admin_username = "testadmin"
+          + computer_name  = "challenge04vm0"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_windows_config {
+          + enable_automatic_upgrades = false
+          + provision_vm_agent        = false
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = (known after apply)
+          + disk_size_gb              = (known after apply)
+          + lun                       = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = (known after apply)
+          + vhd_uri                   = (known after apply)
+          + write_accelerator_enabled = (known after apply)
+        }
+
+      + storage_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2016-Datacenter"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "challenge04vm0-osdisk"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # azurerm_virtual_machine.main[1] will be created
+  + resource "azurerm_virtual_machine" "main" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = false
+      + delete_os_disk_on_termination    = false
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "eastus"
+      + name                             = "challenge04-vm1"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "challenge04-rg"
+      + vm_size                          = "Standard_A2_v2"
+
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
+
+      + os_profile {
+          + admin_password = (sensitive value)
+          + admin_username = "testadmin"
+          + computer_name  = "challenge04vm1"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_windows_config {
+          + enable_automatic_upgrades = false
+          + provision_vm_agent        = false
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = (known after apply)
+          + disk_size_gb              = (known after apply)
+          + lun                       = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = (known after apply)
+          + vhd_uri                   = (known after apply)
+          + write_accelerator_enabled = (known after apply)
+        }
+
+      + storage_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2016-Datacenter"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Standard_LRS"
+          + name                      = "challenge04vm1-osdisk"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space         = [
+          + "10.0.0.0/16",
+        ]
+      + guid                  = (known after apply)
+      + id                    = (known after apply)
+      + location              = "eastus"
+      + name                  = "challenge04-vnet"
+      + resource_group_name   = "challenge04-rg"
+      + subnet                = (known after apply)
+      + vm_protection_enabled = false
+    }
 
 Plan: 9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + private-ip = [
+      + (known after apply),
+      + (known after apply),
+    ]
+  + public-ip  = [
+      + (known after apply),
+      + (known after apply),
+    ]
 
 ------------------------------------------------------------------------
 
