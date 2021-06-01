@@ -151,21 +151,18 @@ Type 'yes' and let Terraform build your infrastructure.
 ### Navigate to the Azure Portal
 
 Open a browser and navigate to the the [Azure Portal](https://portal.azure.com) and you should see your resource group and its resources.
-![](../../img/2018-05-07-18-08-30.png)
 
 ### Find the Full Qualified Domain Name
 
 Click into the Azure Container Instance and take note of its FQDN.
-![](../../img/2018-05-07-18-11-33.png)
 
 ### Navigate to the Web App
 
-Navigate to that URL and you should see the following:
-![](../../img/2018-05-07-18-13-28.png)
+Navigate to that URL and you should see the following: [Azure container](http://aci-myuserpei.eastus.azurecontainer.io/)
+
 
 ### View the Logs
-Back in the Azure Portal, navigate to the Azure Container Instance and view its logs by clicking on the "Containers" tab:
-![](../../img/2018-05-07-18-20-56.png)
+Back in the Azure Portal, navigate to the Azure Container Instance and view its logs by clicking on the "Containers" tab.
 
 Wait a few seconds and refresh the logs, you should see more requests due to the sidecar container.
 
@@ -206,8 +203,8 @@ resource "azurerm_container_group" "windows" {
 
 Running `plan` and `apply` should yield another Container Instance.
 
-Navigating back to the Azure Portal to get the FQDN and following that URL should get you the very familiar IIS default sites page:
-![](../../img/2018-05-07-18-29-10.png)
+Navigating back to the Azure Portal to get the FQDN and following that URL should get you the very familiar IIS default sites page.
+
 
 ## Cleanup
 
