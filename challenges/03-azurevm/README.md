@@ -86,7 +86,7 @@ resource "azurerm_subnet" "main" {
   name                 = "${var.name}-subnet"
   resource_group_name  = "${azurerm_resource_group.main.name}"
   virtual_network_name = "${azurerm_virtual_network.main.name}"
-  address_prefix       = "10.0.1.0/24"
+  address_prefixes     = ["10.0.1.0/24"]
 }
 ```
 
@@ -103,51 +103,52 @@ Run `terraform plan` where you should see the plan of two new resources, namely 
 
 ```sh
 $ terraform plan
-Refreshing Terraform state in-memory prior to plan...
-The refreshed state will be used to calculate this plan, but will not be
-persisted to local or remote state storage.
-
-
-------------------------------------------------------------------------
-
-An execution plan has been generated and is shown below.
+Terraform used the selected providers to generate the following execution plan. 
 Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
 
-  + azurerm_resource_group.main
-      id:                  <computed>
-      location:            "eastus"
-      name:                "challenge03-rg"
-      tags.%:              <computed>
+  # azurerm_resource_group.main will be created
+  + resource "azurerm_resource_group" "main" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "challenge03-rg"
+    }
 
-  + azurerm_subnet.main
-      id:                   <computed>
-      address_prefix:       "10.0.1.0/24"
-      ip_configurations.#:  <computed>
-      name:                 "challenge03-subnet"
-      resource_group_name:  "challenge03-rg"
-      virtual_network_name: "challenge03-vnet"
+  # azurerm_subnet.main will be created
+  + resource "azurerm_subnet" "main" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "10.0.1.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "challenge03-subnet"
+      + resource_group_name                            = "challenge03-rg"
+      + virtual_network_name                           = "challenge03-vnet"
+    }
 
-  + azurerm_virtual_network.main
-      id:                   <computed>
-      address_space.#:      "1"
-      address_space.0:      "10.0.0.0/16"
-      location:             "eastus"
-      name:                 "challenge03-vnet"
-      resource_group_name:  "challenge03-rg"
-      subnet.#:             <computed>
-      tags.%:               <computed>
-
+  # azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space         = [
+          + "10.0.0.0/16",
+        ]
+      + guid                  = (known after apply)
+      + id                    = (known after apply)
+      + location              = "eastus"
+      + name                  = "challenge03-vnet"
+      + resource_group_name   = "challenge03-rg"
+      + subnet                = (known after apply)
+      + vm_protection_enabled = false
+    }
 
 Plan: 3 to add, 0 to change, 0 to destroy.
 
-------------------------------------------------------------------------
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Note: You didn't specify an "-out" parameter to save this plan, so Terraform
-can't guarantee that exactly these actions will be performed if
-"terraform apply" is subsequently run.
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
 ```
 
 </p>
