@@ -192,7 +192,7 @@ resource "azurerm_container_group" "windows" {
       port = 80
       protocol = "TCP"
     }
-
+}
   tags = {
     environment = "testing"
   }
