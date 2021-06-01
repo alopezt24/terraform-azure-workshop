@@ -146,9 +146,8 @@ Terraform will perform the following actions:
 
 Plan: 3 to add, 0 to change, 0 to destroy.
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly 
+these actions if you run "terraform apply" now.
 ```
 
 </p>
