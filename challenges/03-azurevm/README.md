@@ -239,7 +239,7 @@ resource "azurerm_public_ip" "main" {
   name                         = "${var.name}-pubip"
   location                     = "${azurerm_resource_group.main.location}"
   resource_group_name          = "${azurerm_resource_group.main.name}"
-  allocation_method   		  = "Static"
+  allocation_method            = "Static"
 }
 ```
 
@@ -251,7 +251,7 @@ resource "azurerm_network_interface" "main" {
 
   ip_configuration {
     ...
-    public_ip_address_id          = "${azurerm_public_ip.main.id}"
+    public_ip_address_id      = "${azurerm_public_ip.main.id}"
   }
 }
 ```
@@ -261,20 +261,39 @@ resource "azurerm_network_interface" "main" {
 Running `terraform plan` should contain something like the following:
 
 ```sh
-  ~ azurerm_network_interface.main
-      ip_configuration.0.public_ip_address_id: "" => "${azurerm_public_ip.main.id}"
+  Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
 
-  + azurerm_public_ip.main
-      id:                                      <computed>
-      fqdn:                                    <computed>
-      ip_address:                              <computed>
-      location:                                "eastus"
-      name:                                    "challenge03-pubip"
-      public_ip_address_allocation:            "static"
-      resource_group_name:                     "challenge03-rg"
-      sku:                                     "Basic"
-      tags.%:                                  <computed>
+Terraform will perform the following actions:
 
+  # azurerm_network_interface.main will be updated in-place
+  ~ resource "azurerm_network_interface" "main" {
+        id                            = "/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/networkInterfaces/challenge03-nic"
+        name                          = "challenge03-nic"
+        tags                          = {}
+        # (11 unchanged attributes hidden)
+
+      ~ ip_configuration {
+            name                          = "config1"
+          + public_ip_address_id          = (known after apply)
+            # (5 unchanged attributes hidden)
+        }
+    }
+
+  # azurerm_public_ip.main will be created
+  + resource "azurerm_public_ip" "main" {
+      + allocation_method       = "Static"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "challenge03-pubip"
+      + resource_group_name     = "challenge03-rg"
+      + sku                     = "Basic"
+    }
 
 Plan: 1 to add, 1 to change, 0 to destroy.
 ```
