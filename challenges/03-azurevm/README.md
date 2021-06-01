@@ -328,17 +328,17 @@ Now run a `terraform refresh`, which will refresh your state file with the real-
 
 ```sh
 $ terraform refresh
-azurerm_resource_group.main: Refreshing state... (ID: /subscriptions/.../resourceGroups/challenge03-rg)
-azurerm_virtual_network.main: Refreshing state... (ID: /subscriptions/.../virtualNetworks/challenge03-vnet)
-azurerm_public_ip.main: Refreshing state... (ID: /subscriptions/.../publicIPAddresses/challenge03-pubip)
-azurerm_subnet.main: Refreshing state... (ID: /subscriptions/.../subnets/challenge03-subnet)
-azurerm_network_interface.main: Refreshing state... (ID: /subscriptions/.../networkInterfaces/challenge03-nic)
-azurerm_virtual_machine.main: Refreshing state... (ID: /subscriptions/.../virtualMachines/challenge03-vm)
+azurerm_resource_group.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg]
+azurerm_public_ip.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/publicIPAddresses/challenge03-pubip]
+azurerm_virtual_network.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/virtualNetworks/challenge03-vnet]
+azurerm_subnet.main: Refreshing [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/virtualNetworks/challenge03-vnet/subnets/challenge03-subnet]
+azurerm_network_interface.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Network/networkInterfaces/challenge03-nic]
+azurerm_virtual_machine.main: Refreshing state... [id=/subscriptions/.../resourceGroups/challenge03-rg/providers/Microsoft.Compute/virtualMachines/challenge03-vm]
 
 Outputs:
 
-private-ip = 10.0.1.4
-public-ip = 168.61.55.117
+private-ip = "10.0.1.4"
+public-ip = "168.62.56.184"
 ```
 
 > Note: you can also run `terraform output` to see just these outputs without having to run refresh again.
