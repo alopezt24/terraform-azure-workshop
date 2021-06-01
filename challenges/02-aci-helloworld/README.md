@@ -22,8 +22,24 @@ From the Cloud Shell, change directory into a folder specific to this challenge.
 Create a new file called `main.tf` with the following contents:
 
 ```hcl
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.61.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
+
 variable "username" {
-  default = "myusername"
+  default = "myusernamepei"
 }
 
 resource "azurerm_resource_group" "main" {
@@ -62,7 +78,7 @@ resource "azurerm_container_group" "main" {
     port   = "80"
 
     environment_variables {
-      "NODE_ENV" = "testing"
+      NODE_ENV = "testing"
     }
 
     volume {
