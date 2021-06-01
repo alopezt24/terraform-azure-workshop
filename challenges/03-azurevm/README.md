@@ -26,12 +26,20 @@ From the Cloud Shell, change directory into a folder specific to this challenge.
 Create a `main.tf` file with the following to pin the version of Terraform and the AzureRM Provider:
 
 ```hcl
-provider "azurerm" {
-  version = "= 1.4"
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.61.0"
+    }
+  }
 }
 
-terraform {
-  required_version = "= 0.11.7"
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
 }
 ```
 
