@@ -39,7 +39,7 @@ provider "azurerm" {
 }
 
 variable "username" {
-  default = "myusernamepei"
+  default = "myuserpei"
 }
 
 resource "azurerm_resource_group" "main" {
@@ -57,7 +57,6 @@ resource "azurerm_storage_account" "main" {
 
 resource "azurerm_storage_share" "main" {
   name                 = "aci-test-share"
-  resource_group_name  = "${azurerm_resource_group.main.name}"
   storage_account_name = "${azurerm_storage_account.main.name}"
   quota                = 1
 }
@@ -75,10 +74,9 @@ resource "azurerm_container_group" "main" {
     image  = "microsoft/aci-helloworld"
     cpu    = "0.5"
     memory = "1.5"
-    port   = "80"
-
-    environment_variables {
-      NODE_ENV = "testing"
+	ports {
+      port     = 80
+      protocol = "TCP"
     }
 
     volume {
@@ -90,8 +88,7 @@ resource "azurerm_container_group" "main" {
       storage_account_name = "${azurerm_storage_account.main.name}"
       storage_account_key  = "${azurerm_storage_account.main.primary_access_key}"
     }
-  }
-
+}
   container {
     name   = "sidecar"
     image  = "microsoft/aci-tutorial-sidecar"
@@ -99,7 +96,7 @@ resource "azurerm_container_group" "main" {
     memory = "1.5"
   }
 
-  tags {
+  tags = {
     environment = "testing"
   }
 }
@@ -135,7 +132,7 @@ Terraform will perform the following actions:
       ...
 
   + azurerm_storage_account.main
-      name:                                       "azcntinststormyusername"
+      name:                                       "azcntinststormyuserpei"
       ...
 
   + azurerm_storage_share.main
