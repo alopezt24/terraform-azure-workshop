@@ -212,6 +212,6 @@ Plan: 15 to add, 0 to change, 0 to destroy.
 
 ## Resources
 
-- [Using Terraform Modules](https://www.terraform.io/docs/modules/usage.html)
-- [Source Terraform Modiules](https://www.terraform.io/docs/modules/sources.html)
+- [Using Terraform Modules](https://www.terraform.io/docs/language/modules/syntax.html)
+- [Source Terraform Modules](https://www.terraform.io/docs/modules/sources.html)
 - [Public Module Registry](https://www.terraform.io/docs/registry/index.html)
