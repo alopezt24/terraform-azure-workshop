@@ -198,7 +198,6 @@ depends_on = [azurerm_resource_group.example]
 Run a `terraform init` and `terraform plan` to verify that all the resources look correct.
 
 - Note: when running a plan, if you see the following error, please ensure you have completed the steps in **Setup Azure Service Principal** section.
-![](../../img/2018-06-07-16-23-29.png)
 
 > Note: Take a minute to analyse why you needed to run another `terraform init` command before you could run a plan.
 
@@ -210,16 +209,14 @@ Terraform detected the following changes made outside of Terraform since the las
 
   # module.network.azurerm_subnet.subnet[0] has been changed
   ~ resource "azurerm_subnet" "subnet" {
-        id                                             = "/subscriptions/.../resourceGroups/myapp-net
-working/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
-        name                                           = "subnet1"
-      + service_endpoint_policy_ids                    = []
+        id                     = "/subscriptions/.../resourceGroups/myapp-net working/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
+        name                   = "subnet1"
+      + service_endpoint_policy_ids = []
         # (7 unchanged attributes hidden)
     }
   # module.network.azurerm_virtual_network.vnet has been changed
   ~ resource "azurerm_virtual_network" "vnet" {
-        id                    = "/subscriptions/.../resourceGroups/myapp-networking/providers/Microso
-ft.Network/virtualNetworks/acctvnet"
+        id                    = "/subscriptions/.../resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet"
         name                  = "acctvnet"
       ~ subnet                = [
           + {
