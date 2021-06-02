@@ -184,13 +184,14 @@ With Networking in place you can now add the Compute module to create a Windows 
 ```hcl
 module "windowsservers" {
   source              = "Azure/compute/azurerm"
-  version             = "1.1.5"
-  resource_group_name = "myapp-compute-windows"
-  location            = "eastus"
+  version             = "3.14.0"
+  resource_group_name = azurerm_resource_group.example.name
   admin_password      = "ComplxP@ssw0rd!"
   vm_os_simple        = "WindowsServer"
   nb_public_ip        = 0
-  vnet_subnet_id      = "${module.network.vnet_subnets[0]}"
+  vnet_subnet_id      = module.network.vnet_subnets[0]
+
+depends_on = [azurerm_resource_group.example]
 }
 ```
 
@@ -205,135 +206,199 @@ Run a `terraform init` and `terraform plan` to verify that all the resources loo
 <p>
 
 ```sh
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
+Terraform detected the following changes made outside of Terraform since the last "terraform apply":
+
+  # module.network.azurerm_subnet.subnet[0] has been changed
+  ~ resource "azurerm_subnet" "subnet" {
+        id                                             = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-net
+working/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
+        name                                           = "subnet1"
+      + service_endpoint_policy_ids                    = []
+        # (7 unchanged attributes hidden)
+    }
+  # module.network.azurerm_virtual_network.vnet has been changed
+  ~ resource "azurerm_virtual_network" "vnet" {
+        id                    = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking/providers/Microso
+ft.Network/virtualNetworks/acctvnet"
+        name                  = "acctvnet"
+      ~ subnet                = [
+          + {
+              + address_prefix = "10.0.1.0/24"
+              + id             = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
+              + name           = "subnet1"
+              + security_group = ""
+            },
+        ]
+        tags                  = {
+            "environment" = "dev"
+        }
+        # (6 unchanged attributes hidden)
+    }
+  # azurerm_resource_group.example has been changed
+  ~ resource "azurerm_resource_group" "example" {
+        id       = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking"
+        name     = "myapp-networking"
+      + tags     = {}
+        # (1 unchanged attribute hidden)
+    }
+
+Unless you have made equivalent changes to your configuration, or ignored the relevant attributes using ignore_changes, the following
+plan may include actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
   + create
 
 Terraform will perform the following actions:
 
-  + module.windowsservers.azurerm_availability_set.vm
-      id:                                                               <computed>
-      location:                                                         "eastus"
-      managed:                                                          "true"
-      name:                                                             "myvm-avset"
-      platform_fault_domain_count:                                      "2"
-      platform_update_domain_count:                                     "2"
-      resource_group_name:                                              "myapp-compute"
-      tags.%:                                                           <computed>
+  # module.windowsservers.azurerm_availability_set.vm will be created
+  + resource "azurerm_availability_set" "vm" {
+      + id                           = (known after apply)
+      + location                     = "eastus"
+      + managed                      = true
+      + name                         = "myvm-avset"
+      + platform_fault_domain_count  = 2
+      + platform_update_domain_count = 2
+      + resource_group_name          = "myapp-networking"
+      + tags                         = {
+          + "source" = "terraform"
+        }
+    }
 
-  + module.windowsservers.azurerm_network_interface.vm
-      id:                                                               <computed>
-      applied_dns_servers.#:                                            <computed>
-      dns_servers.#:                                                    <computed>
-      enable_ip_forwarding:                                             "false"
-      internal_dns_name_label:                                          <computed>
-      internal_fqdn:                                                    <computed>
-      ip_configuration.#:                                               "1"
-      ip_configuration.0.load_balancer_backend_address_pools_ids.#:     <computed>
-      ip_configuration.0.load_balancer_inbound_nat_rules_ids.#:         <computed>
-      ip_configuration.0.name:                                          "ipconfig0"
-      ip_configuration.0.primary:                                       <computed>
-      ip_configuration.0.private_ip_address:                            <computed>
-      ip_configuration.0.private_ip_address_allocation:                 "dynamic"
-      ip_configuration.0.public_ip_address_id:                          "${length(azurerm_public_ip.vm.*.id) > 0 ? element(concat(azurerm_public_ip.vm.*.id, list(\"\")), count.index) : \"\"}"
-      ip_configuration.0.subnet_id:                                     "/subscriptions/27e9ff76-ce7b-4176-b2bb-4d3f40e1c999/resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
-      location:                                                         "eastus"
-      mac_address:                                                      <computed>
-      name:                                                             "nic-myvm-0"
-      network_security_group_id:                                        "${azurerm_network_security_group.vm.id}"
-      private_ip_address:                                               <computed>
-      private_ip_addresses.#:                                           <computed>
-      resource_group_name:                                              "myapp-compute"
-      tags.%:                                                           <computed>
-      virtual_machine_id:                                               <computed>
+  # module.windowsservers.azurerm_network_interface.vm[0] will be created
+  + resource "azurerm_network_interface" "vm" {
+      + applied_dns_servers           = (known after apply)
+      + dns_servers                   = (known after apply)
+      + enable_accelerated_networking = false
+      + enable_ip_forwarding          = false
+      + id                            = (known after apply)
+      + internal_dns_name_label       = (known after apply)
+      + internal_domain_name_suffix   = (known after apply)
+      + location                      = "eastus"
+      + mac_address                   = (known after apply)
+      + name                          = "myvm-nic-0"
+      + private_ip_address            = (known after apply)
+      + private_ip_addresses          = (known after apply)
+      + resource_group_name           = "myapp-networking"
+      + tags                          = {
+          + "source" = "terraform"
+        }
+      + virtual_machine_id            = (known after apply)
 
-  + module.windowsservers.azurerm_network_security_group.vm
-      id:                                                               <computed>
-      location:                                                         "eastus"
-      name:                                                             "myvm-3389-nsg"
-      resource_group_name:                                              "myapp-compute"
-      security_rule.#:                                                  "1"
-      security_rule.0.access:                                           "Allow"
-      security_rule.0.description:                                      "Allow remote protocol in from all locations"
-      security_rule.0.destination_address_prefix:                       "*"
-      security_rule.0.destination_port_range:                           "3389"
-      security_rule.0.direction:                                        "Inbound"
-      security_rule.0.name:                                             "allow_remote_3389_in_all"
-      security_rule.0.priority:                                         "100"
-      security_rule.0.protocol:                                         "tcp"
-      security_rule.0.source_address_prefix:                            "*"
-      security_rule.0.source_port_range:                                "*"
-      tags.%:                                                           <computed>
+      + ip_configuration {
+          + name                          = "myvm-ip-0"
+          + primary                       = (known after apply)
+          + private_ip_address            = (known after apply)
+          + private_ip_address_allocation = "dynamic"
+          + private_ip_address_version    = "IPv4"
+          + subnet_id                     = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
+        }
+    }
 
-  + module.windowsservers.azurerm_public_ip.vm
-      id:                                                               <computed>
-      domain_name_label:                                                "winsimplevmips"
-      fqdn:                                                             <computed>
-      ip_address:                                                       <computed>
-      location:                                                         "eastus"
-      name:                                                             "myvm-0-publicIP"
-      public_ip_address_allocation:                                     "dynamic"
-      resource_group_name:                                              "myapp-compute"
-      tags.%:                                                           <computed>
+  # module.windowsservers.azurerm_network_interface_security_group_association.test[0] will be created
+  + resource "azurerm_network_interface_security_group_association" "test" {
+      + id                        = (known after apply)
+      + network_interface_id      = (known after apply)
+      + network_security_group_id = (known after apply)
+    }
 
-  + module.windowsservers.azurerm_resource_group.vm
-      id:                                                               <computed>
-      location:                                                         "eastus"
-      name:                                                             "myapp-compute"
-      tags.%:                                                           "1"
-      tags.source:                                                      "terraform"
+  # module.windowsservers.azurerm_network_security_group.vm will be created
+  + resource "azurerm_network_security_group" "vm" {
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "myvm-nsg"
+      + resource_group_name = "myapp-networking"
+      + security_rule       = (known after apply)
+      + tags                = {
+          + "source" = "terraform"
+        }
+    }
 
-  + module.windowsservers.azurerm_virtual_machine.vm-windows
-      id:                                                               <computed>
-      availability_set_id:                                              "${azurerm_availability_set.vm.id}"
-      boot_diagnostics.#:                                               "1"
-      boot_diagnostics.0.enabled:                                       "false"
-      delete_data_disks_on_termination:                                 "false"
-      delete_os_disk_on_termination:                                    "false"
-      location:                                                         "eastus"
-      name:                                                             "myvm0"
-      network_interface_ids.#:                                          <computed>
-      os_profile.#:                                                     "1"
-      os_profile.249456377.admin_password:                              <sensitive>
-      os_profile.249456377.admin_username:                              "azureuser"
-      os_profile.249456377.computer_name:                               "myvm0"
-      os_profile.249456377.custom_data:                                 <computed>
-      os_profile_windows_config.#:                                      "1"
-      os_profile_windows_config.429474957.additional_unattend_config.#: "0"
-      os_profile_windows_config.429474957.enable_automatic_upgrades:    "false"
-      os_profile_windows_config.429474957.provision_vm_agent:           "false"
-      os_profile_windows_config.429474957.winrm.#:                      "0"
-      resource_group_name:                                              "myapp-compute"
-      storage_image_reference.#:                                        "1"
-      storage_image_reference.3904372903.id:                            ""
-      storage_image_reference.3904372903.offer:                         "WindowsServer"
-      storage_image_reference.3904372903.publisher:                     "MicrosoftWindowsServer"
-      storage_image_reference.3904372903.sku:                           "2016-Datacenter"
-      storage_image_reference.3904372903.version:                       "latest"
-      storage_os_disk.#:                                                "1"
-      storage_os_disk.0.caching:                                        "ReadWrite"
-      storage_os_disk.0.create_option:                                  "FromImage"
-      storage_os_disk.0.disk_size_gb:                                   <computed>
-      storage_os_disk.0.managed_disk_id:                                <computed>
-      storage_os_disk.0.managed_disk_type:                              "Premium_LRS"
-      storage_os_disk.0.name:                                           "osdisk-myvm-0"
-      tags.%:                                                           "1"
-      tags.source:                                                      "terraform"
-      vm_size:                                                          "Standard_DS1_V2"
+  # module.windowsservers.azurerm_virtual_machine.vm-windows[0] will be created
+  + resource "azurerm_virtual_machine" "vm-windows" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = false
+      + delete_os_disk_on_termination    = false
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "eastus"
+      + name                             = "myvm-vmWindows-0"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "myapp-networking"
+      + tags                             = {
+          + "source" = "terraform"
+        }
+      + vm_size                          = "Standard_D2s_v3"
 
-  + module.windowsservers.random_id.vm-sa
-      id:                                                               <computed>
-      b64:                                                              <computed>
-      b64_std:                                                          <computed>
-      b64_url:                                                          <computed>
-      byte_length:                                                      "6"
-      dec:                                                              <computed>
-      hex:                                                              <computed>
-      keepers.%:                                                        "1"
-      keepers.vm_hostname:                                              "myvm"
+      + boot_diagnostics {
+          + enabled = false
+        }
 
+      + identity {
+          + identity_ids = (known after apply)
+          + principal_id = (known after apply)
+          + type         = (known after apply)
+        }
 
-Plan: 7 to add, 0 to change, 0 to destroy.
+      + os_profile {
+          + admin_password = (sensitive value)
+          + admin_username = "azureuser"
+          + computer_name  = "myvm-0"
+          + custom_data    = (known after apply)
+        }
+
+      + os_profile_windows_config {
+          + enable_automatic_upgrades = false
+          + provision_vm_agent        = true
+        }
+
+      + storage_data_disk {
+          + caching                   = (known after apply)
+          + create_option             = (known after apply)
+          + disk_size_gb              = (known after apply)
+          + lun                       = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = (known after apply)
+          + name                      = (known after apply)
+          + vhd_uri                   = (known after apply)
+          + write_accelerator_enabled = (known after apply)
+        }
+
+      + storage_image_reference {
+          + offer     = "WindowsServer"
+          + publisher = "MicrosoftWindowsServer"
+          + sku       = "2019-Datacenter"
+          + version   = "latest"
+        }
+
+      + storage_os_disk {
+          + caching                   = "ReadWrite"
+          + create_option             = "FromImage"
+          + disk_size_gb              = (known after apply)
+          + managed_disk_id           = (known after apply)
+          + managed_disk_type         = "Premium_LRS"
+          + name                      = "myvm-osdisk-0"
+          + os_type                   = (known after apply)
+          + write_accelerator_enabled = false
+        }
+    }
+
+  # module.windowsservers.random_id.vm-sa will be created
+  + resource "random_id" "vm-sa" {
+      + b64_std     = (known after apply)
+      + b64_url     = (known after apply)
+      + byte_length = 6
+      + dec         = (known after apply)
+      + hex         = (known after apply)
+      + id          = (known after apply)
+      + keepers     = {
+          + "vm_hostname" = "myvm"
+        }
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
 ```
 
 </p>
