@@ -75,15 +75,25 @@ Create a `main.tf` file in this directory and add the networking module.
 The following will configure the module to create a single Virtual Network and a Subnet.
 
 ```hcl
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "myapp-networking"
+  location = "eastus"
+}
+
 module "network" {
   source              = "Azure/network/azurerm"
-  version             = "2.0.0"
-  resource_group_name = "myapp-networking"
-  location            = "eastus"
+  version             = "3.5.0"
+  resource_group_name = azurerm_resource_group.example.name
 
-  tags = {
+tags = {
     environment = "dev"
   }
+
+depends_on = [azurerm_resource_group.example]
 }
 ```
 
@@ -95,35 +105,63 @@ Run a `terraform init` and `terraform plan` to verify that all the resources loo
 ```sh
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
-  + create
+    + create
+ <= read (data resources)
 
 Terraform will perform the following actions:
 
-  + module.network.azurerm_resource_group.network
-      id:                   <computed>
-      location:             "eastus"
-      name:                 "myapp-networking"
-      tags.%:               <computed>
+  # azurerm_resource_group.example will be created
+  + resource "azurerm_resource_group" "example" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "myapp-networking"
+    }
 
-  + module.network.azurerm_subnet.subnet
-      id:                   <computed>
-      address_prefix:       "10.0.1.0/24"
-      ip_configurations.#:  <computed>
-      name:                 "subnet1"
-      resource_group_name:  "myapp-networking"
-      virtual_network_name: "acctvnet"
+  # module.network.data.azurerm_resource_group.network will be read during apply
+  # (config refers to values not yet known)
+ <= data "azurerm_resource_group" "network"  {
+      + id       = (known after apply)
+      + location = (known after apply)
+      + name     = "myapp-networking"
+      + tags     = (known after apply)
 
-  + module.network.azurerm_virtual_network.vnet
-      id:                   <computed>
-      address_space.#:      "1"
-      address_space.0:      "10.0.0.0/16"
-      location:             "eastus"
-      name:                 "acctvnet"
-      resource_group_name:  "myapp-networking"
-      subnet.#:             <computed>
-      tags.%:               "1"
-      tags.environment:     "dev"
+      + timeouts {
+          + read = (known after apply)
+        }
+    }
 
+  # module.network.azurerm_subnet.subnet[0] will be created
+  + resource "azurerm_subnet" "subnet" {
+      + address_prefix                                 = (known after apply)
+      + address_prefixes                               = [
+          + "10.0.1.0/24",
+        ]
+      + enforce_private_link_endpoint_network_policies = false
+      + enforce_private_link_service_network_policies  = false
+      + id                                             = (known after apply)
+      + name                                           = "subnet1"
+      + resource_group_name                            = "myapp-networking"
+      + service_endpoints                              = []
+      + virtual_network_name                           = "acctvnet"
+    }
+
+  # module.network.azurerm_virtual_network.vnet will be created
+  + resource "azurerm_virtual_network" "vnet" {
+      + address_space         = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers           = []
+      + guid                  = (known after apply)
+      + id                    = (known after apply)
+      + location              = (known after apply)
+      + name                  = "acctvnet"
+      + resource_group_name   = "myapp-networking"
+      + subnet                = (known after apply)
+      + tags                  = {
+          + "environment" = "dev"
+        }
+      + vm_protection_enabled = false
+    }
 
 Plan: 3 to add, 0 to change, 0 to destroy.
 ```
