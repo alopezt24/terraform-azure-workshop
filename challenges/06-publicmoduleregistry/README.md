@@ -210,7 +210,7 @@ Terraform detected the following changes made outside of Terraform since the las
 
   # module.network.azurerm_subnet.subnet[0] has been changed
   ~ resource "azurerm_subnet" "subnet" {
-        id                                             = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-net
+        id                                             = "/subscriptions/.../resourceGroups/myapp-net
 working/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
         name                                           = "subnet1"
       + service_endpoint_policy_ids                    = []
@@ -218,13 +218,13 @@ working/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
     }
   # module.network.azurerm_virtual_network.vnet has been changed
   ~ resource "azurerm_virtual_network" "vnet" {
-        id                    = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking/providers/Microso
+        id                    = "/subscriptions/.../resourceGroups/myapp-networking/providers/Microso
 ft.Network/virtualNetworks/acctvnet"
         name                  = "acctvnet"
       ~ subnet                = [
           + {
               + address_prefix = "10.0.1.0/24"
-              + id             = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
+              + id             = "/subscriptions/.../resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
               + name           = "subnet1"
               + security_group = ""
             },
@@ -236,7 +236,7 @@ ft.Network/virtualNetworks/acctvnet"
     }
   # azurerm_resource_group.example has been changed
   ~ resource "azurerm_resource_group" "example" {
-        id       = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking"
+        id       = "/subscriptions/.../resourceGroups/myapp-networking"
         name     = "myapp-networking"
       + tags     = {}
         # (1 unchanged attribute hidden)
@@ -293,7 +293,7 @@ Terraform will perform the following actions:
           + private_ip_address            = (known after apply)
           + private_ip_address_allocation = "dynamic"
           + private_ip_address_version    = "IPv4"
-          + subnet_id                     = "/subscriptions/4e68fb0a-c9c1-4f3f-8a45-ce3b9c21464c/resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
+          + subnet_id                     = "/subscriptions/.../resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1"
         }
     }
 
