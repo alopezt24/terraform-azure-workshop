@@ -25,21 +25,6 @@ In order to organize your code, create the following folder structure with `main
 
 Inside the `my_virtual_machine` module folder copy over the terraform configuration from challenge 04.
 
-### Create Variables
-
-Extract name, vm size, username and password into variables without defaults.
-
-This will result in them being required.
-
-```hcl
-variable "name" {}
-variable "vm_size" {}
-variable "username" {}
-variable "password" {}
-```
-
-> Extra credit: How many other variables can you extract?
-
 ### Create the Environment
 
 Change your working directory to the `environments/dev` folder.
