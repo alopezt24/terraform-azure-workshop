@@ -177,23 +177,6 @@ The Public Registry contains a lot of information about the module. Navigate to 
 
 We can see the outputs we should expect and a short description of each of them.
 
-Now that we have the networking infrastructure applied, we can view the outputs with terraform by running `terraform output -module network`.
-
-> Note: Because we are using a module, the outputs are not available at the root module, hence the need to specify the `-module network` option.
-
-```sh
-$ terraform output -module network
-vnet_address_space = [
-    10.0.0.0/16
-]
-vnet_id = /subscriptions/.../resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet
-vnet_location = eastus
-vnet_name = acctvnet
-vnet_subnets = [
-    /subscriptions/.../resourceGroups/myapp-networking/providers/Microsoft.Network/virtualNetworks/acctvnet/subnets/subnet1
-]
-```
-
 ### Add Compute Module - Windows
 
 With Networking in place you can now add the Compute module to create a Windows Virtual Machine.
