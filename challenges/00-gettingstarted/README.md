@@ -31,23 +31,15 @@ Signing up for a trial requires:
 
 Located at the top of the page is the button open the Azure Cloud Shell inside the Azure Portal.
 
-![](../../img/2018-05-28-12-25-01.png)
-
 > Note: Another option is to use the full screen Azure Cloud Shell at [https://shell.azure.com/](https://shell.azure.com/).
 
 The first time you connect to the Azure Cloud Shell you will be prompted to setup an Azure File Share that you will persist the environment.
 
-![](../../img/2018-05-28-12-27-31.png)
-
 Click the "Bash (Linux)" option.
 
-Select the Azure Subscription and click "Create storage":
+Select the Azure Subscription and click "Create storage".
 
-![](../../img/2018-05-28-12-29-06.png)
-
-After a few seconds you should see that your storage account has been created:
-
-![](../../img/2018-05-28-12-30-33.png)
+After a few seconds you should see that your storage account has been created.
 
 > Note: Behind the scenes this is creating a new Resource Group with the name `cloud-shell-storage-eastus` (or which ever region you defaulted to). If you need more information, it can be found [here](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage).
 
