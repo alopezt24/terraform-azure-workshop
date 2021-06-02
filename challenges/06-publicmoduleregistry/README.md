@@ -173,11 +173,9 @@ Run `terraform apply` to create the infrastructure.
 
 ### View Outputs
 
-The Public Registry contains a lot of information about the module. Navigate to the outputs tab for the [Networking Module](https://registry.terraform.io/modules/Azure/network/azurerm/2.0.0?tab=outputs).
+The Public Registry contains a lot of information about the module. Navigate to the outputs tab for the [Networking Module](https://registry.terraform.io/modules/Azure/network/azurerm/latest).
 
 We can see the outputs we should expect and a short description of each of them.
-
-![](../../img/2018-05-14-08-18-48.png)
 
 Now that we have the networking infrastructure applied, we can view the outputs with terraform by running `terraform output -module network`.
 
