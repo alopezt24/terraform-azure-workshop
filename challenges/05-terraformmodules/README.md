@@ -73,7 +73,7 @@ commands will detect it and remind you to do so if necessary.
 
 ## Terraform Plan
 
-Run `terraform plan` and you should see your linux VM built from your module.
+Run `terraform plan` and you should see your VM built from your module.
 
 ```sh
 # module.myawesomewindowsvm.azurerm_virtual_machine.main[0] will be created
