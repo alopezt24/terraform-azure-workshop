@@ -12,7 +12,7 @@ In the Portal, create a SA.
 
 Get the account information, including SAS token.
 
-Create a Blob Container
+Create a blob container
 
 ### Config Backend
 
