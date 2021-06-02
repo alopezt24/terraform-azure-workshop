@@ -24,13 +24,12 @@ terraform {
     storage_account_name = "remotebackend"
     container_name       = "tfstate"
     key                  = "prod.terraform.tfstate"
-
-    sas_token = "UQzuvHgRYdPOjsKYl8Fj4MzdQuNYHsvIZqFJqD9Ij/rfUX+x/7GhfLwkZhJJiztkNGG6e1MNb1IpC0AuBD7SCA=="
-  }
+    sas_token            = "?sv=2020-02-10&ss=bfqt&srt=co&sp=rwdlacuptfx&se=2021-06-02T11:07:35Z&st=2021-06-02T03:07:35Z&spr=https&si$
+}
 }
 ```
 
-Run `terraform init -migrate-state`.
+Run `terraform init -reconfigure`.
 
 ### View Lock State
 
