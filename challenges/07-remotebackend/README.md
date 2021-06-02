@@ -30,7 +30,7 @@ terraform {
 }
 ```
 
-Run `terraform init`.
+Run `terraform init -migrate-state`.
 
 ### View Lock State
 
