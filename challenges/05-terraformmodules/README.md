@@ -172,21 +172,36 @@ Since we added another module call, we must run `terraform init` again before ru
 We should see twice as much infrastructure in our plan.
 
 ```sh
-  + module.myawesomewindowsvm.azurerm_resource_group.module
-      id:                                 <computed>
-      location:                           "centralus"
-      name:                               "awesomeapp-rg"
+  # module.differentwindowsvm.azurerm_virtual_machine.main[0] will be created
+  + resource "azurerm_virtual_machine" "main" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = false
+      + delete_os_disk_on_termination    = false
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "eastus"
+      + name                             = "differentapp-vm0"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "differentapp-rg"
+      + vm_size                          = "Standard_A2_v2"
 
 ...
 
-  + module.differentlinuxvm.azurerm_resource_group.module
-      id:                                 <computed>
-      location:                           "centralus"
-      name:                               "differentapp-rg"
-
+# module.myawesomewindowsvm.azurerm_virtual_machine.main[0] will be created
+  + resource "azurerm_virtual_machine" "main" {
+      + availability_set_id              = (known after apply)
+      + delete_data_disks_on_termination = false
+      + delete_os_disk_on_termination    = false
+      + id                               = (known after apply)
+      + license_type                     = (known after apply)
+      + location                         = "eastus"
+      + name                             = "awesomeapp-vm0"
+      + network_interface_ids            = (known after apply)
+      + resource_group_name              = "awesomeapp-rg"
+      + vm_size                          = "Standard_A2_v2"
 ...
 
-Plan: 12 to add, 0 to change, 0 to destroy.
+Plan: 15 to add, 0 to change, 0 to destroy.
 
 ```
 
