@@ -20,11 +20,13 @@ Update your configuration with the info:
 
 ```hcl
 terraform {
-    backend {
-        account = ""
-        key = ""
-        name = ""
-    }
+  backend "azurerm" {
+    storage_account_name = "remotebackend"
+    container_name       = "tfstate"
+    key                  = "prod.terraform.tfstate"
+
+    sas_token = "UQzuvHgRYdPOjsKYl8Fj4MzdQuNYHsvIZqFJqD9Ij/rfUX+x/7GhfLwkZhJJiztkNGG6e1MNb1IpC0AuBD7SCA=="
+  }
 }
 ```
 
