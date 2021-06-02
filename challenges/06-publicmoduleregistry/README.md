@@ -57,11 +57,11 @@ Search for "Compute" which will yield all compute resources in the registry.
 
 Now Filter By 'azurerm' which should give you (among others) the Microsoft Azure Compute Module.
 
-If you are having issues locating the module, you can find it directly at [https://registry.terraform.io/modules/Azure/compute/azurerm/1.1.5](https://registry.terraform.io/modules/Azure/compute/azurerm/1.1.5).
+If you are having issues locating the module, you can find it directly at [https://registry.terraform.io/modules/Azure/compute/azurerm/latest](https://registry.terraform.io/modules/Azure/compute/azurerm/latest).
 
 Search again for "Networking" and apply the same Filter By, which should give you the Microsoft Azure Networking Module.
 
-If you are having issues locating the module, you can find it directly at [https://registry.terraform.io/modules/Azure/network/azurerm/2.0.0](https://registry.terraform.io/modules/Azure/network/azurerm/2.0.0).
+If you are having issues locating the module, you can find it directly at [https://registry.terraform.io/modules/Azure/network/azurerm/latest](https://registry.terraform.io/modules/Azure/network/azurerm/latest).
 
 ### Create Terraform Configuration
 
